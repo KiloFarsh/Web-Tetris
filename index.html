@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Tetris - Choice</title>
+    <title>Web Tetris | Select Device</title>
     <style>
-        body { background: #0b0b0b; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        h1 { color: #5f9ea0; margin-bottom: 30px; }
-        .btn-container { display: flex; gap: 20px; }
-        a { text-decoration: none; color: white; background: #181818; border: 1px solid #3a3a3a; padding: 20px 40px; border-radius: 12px; transition: 0.3s; text-align: center; }
-        a:hover { background: #222; border-color: #5f9ea0; transform: translateY(-5px); }
-        .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+        body { background: #0b0b0b; color: #e0e0e0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        h1 { color: #5f9ea0; letter-spacing: 5px; margin-bottom: 40px; font-size: 2rem; text-align: center; }
+        .btn-container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
+        a { text-decoration: none; color: #c0c0c0; background: #121212; border: 1px solid #2a2a2a; padding: 30px 50px; border-radius: 16px; transition: 0.3s; text-align: center; box-shadow: 0 5px 0 #050505; }
+        a:hover { background: #181818; border-color: #5f9ea0; transform: translateY(-5px); color: #fff; }
+        .icon { font-size: 50px; display: block; margin-bottom: 15px; }
+        .desc { font-size: 0.9rem; opacity: 0.7; margin-top: 10px; display: block; }
     </style>
 </head>
 <body>
-    <h1>ВЫБЕРИ УСТРОЙСТВО</h1>
+    <h1>SELECT YOUR DEVICE</h1>
     <div class="btn-container">
         <a href="pc/index.html">
             <span class="icon">💻</span>
-            Для ПК<br>(Клавиатура)
+            <strong>DESKTOP</strong>
+            <span class="desc">Keyboard Controls</span>
         </a>
         <a href="mobile/index.html">
             <span class="icon">📱</span>
-            Для телефона<br>(Сенсор)
+            <strong>MOBILE</strong>
+            <span class="desc">Touch Controls</span>
         </a>
     </div>
 </body>
