@@ -9,85 +9,61 @@
       box-sizing: border-box;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: #0b0b0b;
+      background: #0a0a0a;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Courier New', Courier, monospace;
-      padding: 8px;
+      padding: 6px;
     }
 
     .game-container {
       background: #121212;
-      padding: 16px 12px;
-      border-radius: 16px;
+      padding: 10px;
+      border-radius: 12px;
       border: 1px solid #2a2a2a;
-      box-shadow: 0 8px 0 #050505;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
       align-items: center;
       max-width: 100%;
-    }
-
-    /* игровое поле — адаптивный размер */
-    .play-area {
-      text-align: center;
       width: 100%;
     }
 
-    canvas#board {
-      display: block;
-      margin: 0 auto;
-      background-color: #0c0c0c;
-      border: 2px solid #2e2e2e;
-      border-radius: 6px;
-      image-rendering: crisp-edges;
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      aspect-ratio: 1 / 2;
-    }
-
-    /* верхняя панель с информацией */
+    /* компактная верхняя панель */
     .top-panel {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      gap: 12px;
+      padding: 0 4px;
     }
 
     .score-box {
       text-align: left;
-      flex: 1;
     }
 
     .score-label {
-      color: #9a9a9a;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      margin-bottom: 2px;
+      color: #888;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
     }
 
     .score-value {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #c0c0c0;
+      color: #ccc;
       background: #181818;
-      padding: 4px 12px;
-      border-radius: 8px;
-      border: 1px solid #363636;
-      box-shadow: inset 0 2px 4px #000000;
-      font-family: 'Courier New', monospace;
-      line-height: 1.2;
+      padding: 2px 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      line-height: 1.3;
       display: inline-block;
     }
 
@@ -96,112 +72,85 @@
     }
 
     .next-label {
-      color: #9a9a9a;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      margin-bottom: 2px;
+      color: #888;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
     }
 
     canvas#nextCanvas {
       background-color: #0e0e0e;
-      border-radius: 6px;
-      border: 1px solid #333333;
-      width: 70px;
-      height: 70px;
+      border-radius: 4px;
+      border: 1px solid #333;
+      width: 60px;
+      height: 60px;
       image-rendering: crisp-edges;
     }
 
-    /* панель управления — сенсорные кнопки */
-    .controls {
+    /* игровое поле */
+    canvas#board {
+      display: block;
+      margin: 0 auto;
+      background-color: #0c0c0c;
+      border: 2px solid #2e2e2e;
+      border-radius: 6px;
+      image-rendering: crisp-edges;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 1 / 2;
+    }
+
+    /* сенсорные кнопки - компактные */
+    .touch-controls {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       width: 100%;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    .control-row {
+    .direction-pad {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
     }
 
-    .ctrl-btn {
-      background: #181818;
-      border: 1px solid #3a3a3a;
-      color: #b0b0b0;
-      font-weight: bold;
-      font-size: 1.5rem;
-      padding: 12px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 0 #050505;
-      cursor: pointer;
-      transition: all 0.06s;
-      font-family: inherit;
-      text-align: center;
-      flex: 1;
-      min-width: 70px;
-      touch-action: manipulation;
-      user-select: none;
-    }
-
-    .ctrl-btn:active {
-      transform: translateY(3px);
-      box-shadow: 0 1px 0 #050505;
-      background: #222222;
-    }
-
-    .action-buttons {
+    .action-row {
       display: flex;
-      gap: 10px;
-      margin-top: 4px;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .action-btn {
+    .touch-btn {
       background: #1a1a1a;
       border: 1px solid #3a3a3a;
-      color: #a0a0a0;
+      color: #ccc;
       font-weight: bold;
-      font-size: 1rem;
-      padding: 12px 8px;
-      border-radius: 30px;
-      box-shadow: 0 3px 0 #050505;
+      font-size: 1.3rem;
+      padding: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 3px 0 #080808;
       cursor: pointer;
-      transition: all 0.06s;
-      font-family: inherit;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      text-align: center;
       flex: 1;
       touch-action: manipulation;
+      transition: all 0.05s;
     }
 
-    .action-btn:active {
+    .touch-btn.small {
+      font-size: 1rem;
+      padding: 8px 0;
+    }
+
+    .touch-btn:active {
       transform: translateY(2px);
-      box-shadow: 0 1px 0 #050505;
+      box-shadow: 0 1px 0 #080808;
       background: #252525;
     }
 
-    .hint {
-      color: #5a5a5a;
-      font-size: 0.65rem;
-      letter-spacing: 1px;
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    /* десктопные подсказки скрываем на мобильных, но показываем кнопки */
+    /* скрываем на десктопе */
     @media (min-width: 768px) {
-      .controls {
-        display: none;
-      }
-      .hint {
-        display: block;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .hint {
+      .touch-controls {
         display: none;
       }
     }
@@ -209,7 +158,7 @@
 </head>
 <body>
 <div class="game-container">
-  <!-- Верхняя панель: счёт и следующая фигура -->
+  <!-- Верх: счёт и next -->
   <div class="top-panel">
     <div class="score-box">
       <div class="score-label">SCORE</div>
@@ -221,31 +170,24 @@
     </div>
   </div>
 
-  <!-- Игровое поле -->
-  <div class="play-area">
-    <canvas id="board" width="300" height="600"></canvas>
-  </div>
+  <!-- Поле -->
+  <canvas id="board" width="300" height="600"></canvas>
 
-  <!-- Сенсорные кнопки управления (показываются только на мобильных) -->
-  <div class="controls">
-    <div class="control-row">
-      <div class="ctrl-btn" data-action="left">←</div>
-      <div class="ctrl-btn" data-action="right">→</div>
-      <div class="ctrl-btn" data-action="rotate">↻</div>
+  <!-- Сенсорное управление -->
+  <div class="touch-controls">
+    <div class="direction-pad">
+      <button class="touch-btn" data-action="left">←</button>
+      <button class="touch-btn" data-action="right">→</button>
+      <button class="touch-btn" data-action="rotate">↻</button>
     </div>
-    <div class="control-row">
-      <div class="ctrl-btn" data-action="down">↓</div>
-      <div class="ctrl-btn" data-action="hardDrop">⬇⬇</div>
+    <div class="direction-pad">
+      <button class="touch-btn" data-action="down">↓</button>
+      <button class="touch-btn" data-action="hardDrop">⬇⬇</button>
     </div>
-    <div class="action-buttons">
-      <div class="action-btn" data-action="pause">⏸ PAUSE</div>
-      <div class="action-btn" data-action="restart">↺ RESTART</div>
+    <div class="action-row">
+      <button class="touch-btn small" data-action="pause">⏸ PAUSE</button>
+      <button class="touch-btn small" data-action="restart">↺ NEW</button>
     </div>
-  </div>
-
-  <!-- Десктопная подсказка (скрыта на мобильных) -->
-  <div class="hint">
-    ← → ↓ &nbsp;&nbsp; ⬆ rotate &nbsp;|&nbsp; SPACE pause &nbsp;|&nbsp; H hard drop
   </div>
 </div>
 
@@ -256,10 +198,9 @@
     // ---------- НАСТРОЙКИ ----------
     const COLS = 10;
     const ROWS = 20;
-    let BLOCK_SIZE = 30;        // будет пересчитываться
+    let BLOCK_SIZE = 30;
     const NEXT_SIZE = 24;
 
-    // Фигуры
     const SHAPES = [
       { matrix: [[1,1,1,1]], color: '#5f9ea0' },
       { matrix: [[1,1],[1,1]], color: '#b8865b' },
@@ -286,10 +227,9 @@
     const nextCtx = nextCanvas.getContext('2d');
     const scoreDisplay = document.getElementById('scoreDisplay');
 
-    // ---------- АДАПТИВНЫЙ РАЗМЕР БЛОКА ----------
+    // ---------- АДАПТИВНОСТЬ ----------
     function updateBlockSize() {
-      const container = canvas.parentElement;
-      const maxWidth = Math.min(container.clientWidth, 300);
+      const maxWidth = Math.min(canvas.parentElement.clientWidth, 280);
       canvas.style.width = maxWidth + 'px';
       BLOCK_SIZE = maxWidth / COLS;
     }
@@ -309,9 +249,7 @@
     }
 
     function spawnNewPiece() {
-      if (!nextPiece) {
-        nextPiece = getRandomPiece();
-      }
+      if (!nextPiece) nextPiece = getRandomPiece();
       const newMatrix = nextPiece.matrix.map(row => [...row]);
       currentPiece = {
         matrix: newMatrix,
@@ -334,12 +272,8 @@
           if (matrix[row][col] !== 0) {
             const boardX = offsetX + col;
             const boardY = offsetY + row;
-            if (boardX < 0 || boardX >= COLS || boardY >= ROWS || boardY < 0) {
-              return true;
-            }
-            if (boardY >= 0 && board[boardY][boardX] !== '') {
-              return true;
-            }
+            if (boardX < 0 || boardX >= COLS || boardY >= ROWS || boardY < 0) return true;
+            if (boardY >= 0 && board[boardY][boardX] !== '') return true;
           }
         }
       }
@@ -360,30 +294,26 @@
           }
         }
       }
-
       clearFullRows();
       spawnNewPiece();
       if (gameOver) clearGameLoop();
     }
 
     function clearFullRows() {
-      let linesCleared = 0;
+      let lines = 0;
       for (let row = ROWS - 1; row >= 0; ) {
         if (board[row].every(cell => cell !== '')) {
           board.splice(row, 1);
           board.unshift(Array(COLS).fill(''));
-          linesCleared++;
+          lines++;
         } else {
           row--;
         }
       }
-
-      if (linesCleared > 0) {
-        const addScore = linesCleared === 1 ? 10 :
-                         linesCleared === 2 ? 25 :
-                         linesCleared === 3 ? 45 : 70;
-        score += addScore;
-        updateScoreDisplay();
+      if (lines > 0) {
+        const add = lines === 1 ? 10 : lines === 2 ? 25 : lines === 3 ? 45 : 70;
+        score += add;
+        updateScore();
       }
     }
 
@@ -437,8 +367,8 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Сетка
-      ctx.strokeStyle = '#2c2c2c';
-      ctx.lineWidth = 0.7;
+      ctx.strokeStyle = '#2a2a2a';
+      ctx.lineWidth = 0.6;
       for (let i = 0; i <= COLS; i++) {
         ctx.beginPath();
         ctx.moveTo(i * BLOCK_SIZE, 0);
@@ -452,7 +382,7 @@
         ctx.stroke();
       }
 
-      // Зафиксированные блоки
+      // Блоки
       for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLS; col++) {
           const color = board[row][col];
@@ -460,7 +390,7 @@
             ctx.fillStyle = color;
             ctx.fillRect(col * BLOCK_SIZE, row * BLOCK_SIZE, BLOCK_SIZE-0.5, BLOCK_SIZE-0.5);
             ctx.strokeStyle = '#404040';
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0.8;
             ctx.strokeRect(col * BLOCK_SIZE+1, row * BLOCK_SIZE+1, BLOCK_SIZE-3, BLOCK_SIZE-3);
           }
         }
@@ -473,30 +403,18 @@
         for (let r = 0; r < matrix.length; r++) {
           for (let c = 0; c < matrix[0].length; c++) {
             if (matrix[r][c] !== 0) {
-              const boardX = (x + c) * BLOCK_SIZE;
-              const boardY = (y + r) * BLOCK_SIZE;
-              ctx.fillRect(boardX, boardY, BLOCK_SIZE-0.5, BLOCK_SIZE-0.5);
-            }
-          }
-        }
-        ctx.strokeStyle = '#5a5a5a';
-        ctx.lineWidth = 1.2;
-        for (let r = 0; r < matrix.length; r++) {
-          for (let c = 0; c < matrix[0].length; c++) {
-            if (matrix[r][c] !== 0) {
-              const boardX = (x + c) * BLOCK_SIZE;
-              const boardY = (y + r) * BLOCK_SIZE;
-              ctx.strokeRect(boardX+1, boardY+1, BLOCK_SIZE-3, BLOCK_SIZE-3);
+              ctx.fillRect((x + c) * BLOCK_SIZE, (y + r) * BLOCK_SIZE, BLOCK_SIZE-0.5, BLOCK_SIZE-0.5);
             }
           }
         }
       }
 
+      // Статусы
       if (gameOver) {
         ctx.fillStyle = '#0a0a0acc';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.font = `bold ${Math.floor(canvas.width/12)}px "Courier New", monospace`;
-        ctx.fillStyle = '#a0a0a0';
+        ctx.fillStyle = '#aaa';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2);
@@ -504,7 +422,7 @@
         ctx.fillStyle = '#101010cc';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.font = `bold ${Math.floor(canvas.width/10)}px "Courier New", monospace`;
-        ctx.fillStyle = '#b0b0b0';
+        ctx.fillStyle = '#bbb';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('PAUSED', canvas.width/2, canvas.height/2);
@@ -515,19 +433,6 @@
       nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
       if (!nextPiece) return;
       
-      nextCtx.strokeStyle = '#2a2a2a';
-      nextCtx.lineWidth = 0.8;
-      for (let i=0; i<=4; i++) {
-        nextCtx.beginPath();
-        nextCtx.moveTo(i*NEXT_SIZE, 0);
-        nextCtx.lineTo(i*NEXT_SIZE, nextCanvas.height);
-        nextCtx.stroke();
-        nextCtx.beginPath();
-        nextCtx.moveTo(0, i*NEXT_SIZE);
-        nextCtx.lineTo(nextCanvas.width, i*NEXT_SIZE);
-        nextCtx.stroke();
-      }
-
       const matrix = nextPiece.matrix;
       const color = nextPiece.color;
       const cols = matrix[0].length;
@@ -542,9 +447,6 @@
             const y = offsetY + r * NEXT_SIZE;
             nextCtx.fillStyle = color;
             nextCtx.fillRect(x, y, NEXT_SIZE-1, NEXT_SIZE-1);
-            nextCtx.strokeStyle = '#4f4f4f';
-            nextCtx.lineWidth = 1.2;
-            nextCtx.strokeRect(x+1, y+1, NEXT_SIZE-3, NEXT_SIZE-3);
           }
         }
       }
@@ -555,18 +457,17 @@
       drawNext();
     }
 
-    function updateScoreDisplay() {
+    function updateScore() {
       scoreDisplay.textContent = score;
     }
 
-    // ---------- ИГРОВОЙ ЦИКЛ ----------
+    // ---------- ЦИКЛ ----------
     function gameTick() {
       if (gameOver || paused || !currentPiece) return;
       movePiece(0, 1);
-      drawAll();
     }
 
-    function startGameLoop() {
+    function startLoop() {
       if (gameInterval) clearInterval(gameInterval);
       gameInterval = setInterval(gameTick, BASE_INTERVAL_MS);
     }
@@ -582,9 +483,7 @@
       if (gameOver) return;
       paused = !paused;
       drawAll();
-      if (!paused && !gameOver && !gameInterval) {
-        startGameLoop();
-      }
+      if (!paused && !gameOver && !gameInterval) startLoop();
     }
 
     function resetGame() {
@@ -592,62 +491,17 @@
       score = 0;
       gameOver = false;
       paused = false;
-      updateScoreDisplay();
+      updateScore();
       nextPiece = getRandomPiece();
       spawnNewPiece();
       drawAll();
       clearGameLoop();
-      startGameLoop();
+      startLoop();
     }
 
-    // ---------- УПРАВЛЕНИЕ ----------
-    function handleKeyDown(e) {
-      const key = e.key;
-      const preventKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '];
-      if (preventKeys.includes(key)) {
-        e.preventDefault();
-      }
-      if (gameOver) return;
-
-      switch (key) {
-        case 'ArrowLeft':  movePiece(-1, 0); break;
-        case 'ArrowRight': movePiece(1, 0); break;
-        case 'ArrowDown':  movePiece(0, 1); break;
-        case 'ArrowUp':    rotatePiece(); break;
-        case ' ':          togglePause(); break;
-        default: return;
-      }
-      drawAll();
-    }
-
-    // Hard drop по H (десктоп)
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'h' || e.key === 'H') {
-        e.preventDefault();
-        if (!gameOver && !paused) {
-          hardDrop();
-          drawAll();
-        }
-      }
-      if (e.key === 'r' || e.key === 'R') {
-        resetGame();
-      }
-    });
-
-    document.addEventListener('keydown', handleKeyDown);
-    
-    window.addEventListener('keyup', (e) => {
-      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)) {
-        e.preventDefault();
-      }
-    });
-
-    // ---------- СЕНСОРНОЕ УПРАВЛЕНИЕ ----------
-    function handleTouchAction(action) {
-      if (gameOver) {
-        if (action === 'restart') resetGame();
-        return;
-      }
+    // ---------- ОБРАБОТЧИКИ ----------
+    function handleAction(action) {
+      if (gameOver && action !== 'restart') return;
       
       switch(action) {
         case 'left': movePiece(-1, 0); break;
@@ -661,28 +515,48 @@
       drawAll();
     }
 
-    // Навешиваем обработчики на сенсорные кнопки
+    // Сенсорные кнопки
     document.querySelectorAll('[data-action]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const action = btn.getAttribute('data-action');
-        handleTouchAction(action);
-      });
+      const action = btn.getAttribute('data-action');
       
-      btn.addEventListener('touchstart', (e) => {
+      const handler = (e) => {
         e.preventDefault();
-      }, { passive: false });
+        e.stopPropagation();
+        handleAction(action);
+      };
+      
+      btn.addEventListener('click', handler);
+      btn.addEventListener('touchstart', handler, { passive: false });
     });
 
-    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+    // Клавиатура (десктоп)
+    document.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(key)) {
+        e.preventDefault();
+      }
+      if (gameOver) return;
+      
+      switch(key) {
+        case 'ArrowLeft': handleAction('left'); break;
+        case 'ArrowRight': handleAction('right'); break;
+        case 'ArrowDown': handleAction('down'); break;
+        case 'ArrowUp': handleAction('rotate'); break;
+        case ' ': handleAction('pause'); break;
+        case 'h': case 'H': handleAction('hardDrop'); break;
+      }
+    });
 
-    // ---------- АДАПТИВНОСТЬ ----------
+    // Адаптивность
     window.addEventListener('resize', () => {
       updateBlockSize();
       drawAll();
     });
 
-    // Инициализация
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+    canvas.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+
+    // Старт
     updateBlockSize();
     resetGame();
   })();
