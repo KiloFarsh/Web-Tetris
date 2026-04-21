@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tetris - Choice</title>
+    <style>
+        body { background: #0b0b0b; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        h1 { color: #5f9ea0; margin-bottom: 30px; }
+        .btn-container { display: flex; gap: 20px; }
+        a { text-decoration: none; color: white; background: #181818; border: 1px solid #3a3a3a; padding: 20px 40px; border-radius: 12px; transition: 0.3s; text-align: center; }
+        a:hover { background: #222; border-color: #5f9ea0; transform: translateY(-5px); }
+        .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>ВЫБЕРИ УСТРОЙСТВО</h1>
+    <div class="btn-container">
+        <a href="pc/index.html">
+            <span class="icon">💻</span>
+            Для ПК<br>(Клавиатура)
+        </a>
+        <a href="mobile/index.html">
+            <span class="icon">📱</span>
+            Для телефона<br>(Сенсор)
+        </a>
+    </div>
+</body>
+</html>
